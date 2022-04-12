@@ -1,5 +1,6 @@
 package output_4_sql_from_txt_file_app;
 
+import ArrayList_extraction_from_txtFile.ArrayListFromTxt;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,6 +19,7 @@ public class Output_4_SQL_from_TXT_file_APP {
         ArrayList<Integer> almodFilmReleaseYearArray = new ArrayList();
         
         String tableName01 = "films_by_Almodovar";
+        String tableName02_JoeWrightFilms = "films_by_Joe_Wright";
         String schemaName01 = "movies_i_love";
         
         File almodTxt = new File("D:\\code_projects\\sql_films_I_love\\Films_directed_by_Pedro_Almodovar.txt");
@@ -79,6 +81,16 @@ public class Output_4_SQL_from_TXT_file_APP {
         System.out.println("");
         System.out.println("the size of the names list is " + almodFilmNamesArray.size());
         System.out.println("the size of the releaseYear list is " + almodFilmReleaseYearArray.size() );
+        
+        System.out.println(""); 
+        ArrayListFromTxt joe01 = new ArrayListFromTxt();
+        ArrayList<String> joeWrightFilms = joe01.joeWrightFilmsFileExtraction();
+        serv.displayStringsInArrayList(joeWrightFilms);
+        
+        System.out.println("");
+        System.out.println("here follws the script I want");
+        serv.getSqlCreation().createSQLtable_idPK_int_varchar(schemaName01, tableName02_JoeWrightFilms, "release_year", "film_name");
+        serv.getSqlCreation().insertValuesSQL_idPK_int_varchar(almodFilmReleaseYearArray, joeWrightFilms, tableName02_JoeWrightFilms, schemaName01);
         
     }
     

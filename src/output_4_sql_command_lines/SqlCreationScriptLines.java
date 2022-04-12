@@ -53,6 +53,13 @@ public class SqlCreationScriptLines {
         */
         
         System.out.println("");
+        System.out.println(" USE " + schemaName + " ; ");
+        System.out.println(" DROP TABLE IF EXISTS "+ table2createName  + " ; ");
+        System.out.println(" CREATE TABLE " + table2createName + " ( ");
+        System.out.println(" id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, ");
+        System.out.println(" " + fieldName4varchar + " VARCHAR(100) NOT NULL, ");
+        System.out.println(" " + fieldName4int + " INT NOT NULL ");
+        System.out.println(" );");
         
         
     }
